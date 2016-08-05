@@ -1,0 +1,8 @@
+node_modules
+todoData
+*.wt
+*.turtle
+*.lock
+*.bson
+journal
+diagnostic.data

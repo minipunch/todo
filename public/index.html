@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html ng-app="scotchTodo">
+  <head>
+    <meta charset="utf-8">
+    <title>test</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/tasks.css">
+    <link rel="stylesheet" href="css/page.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://use.fontawesome.com/4f2ed8d614.js"></script>
+    <script   src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script src="core.js"></script>
+  </head>
+  <body ng-controller="mainController">
+    <div class="container">
+
+      <div class="jumbotron text-center">
+        <h1>You have <span class="label label-info">{{todos.length}}</span> tasks to be completed</h1>
+      </div>
+
+      <div id="todo-list" class="row">
+        <div class="col-sm-8 col-sm-offset-2">
+            <div class="row">
+              <div class="tasks">
+                <div class="table-responsive">
+                  <table class="table table-hover">
+                    <thead>
+                      <th>Task</th>
+                      <th>Manage</th>
+                    </thead>
+                    <tbody>
+                      <tr ng-repeat="todo in todos">
+                        <td>
+                          <span ng-show="!todo.isBeingEdited">{{todo.text}}</span>
+                          <input type="text" ng-model="todo.text" ng-show="todo.isBeingEdited">
+                        </td>
+                        <td>
+                          <i class="fa fa-pencil" aria-hidden="true" ng-click="enableEdit(todo)" ng-show="!todo.needConfirmation"></i>
+                          <i class="fa fa-trash-o" aria-hidden="true" ng-click="deleteTodo(todo._id)" ng-show="!todo.needConfirmation"></i>
+                          <i class="fa fa-check" aria-hidden="true" ng-click="saveChanges(todo)" ng-show="todo.needConfirmation"></i>
+                          <i class="fa fa-times" aria-hidden="true" ng-show="todo.needConfirmation" ng-click="cancelChanges(todo)"></i>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+
+              <!-- <div class="task-text col-sm-9" ng-click="manageTask(todo._id)" ng-mouseover="taskHover(todo._id)">
+                <span id="todo_{{todo._id}}">{{todo.text}}</span>
+                <input style="display:none;" value="{{todo.text}}" type="text" id="{{todo._id}}">
+                <button class="{{todo._id}}" style="display:none;">Save</button>
+                <button style="display:none;">Cancel</button>
+              </div>
+              <div class="task-manage col-sm-3 {{todo._id}}">
+                <ul>
+                  <li ng-click="enableEdit(todo._id)" style="margin-right:1em;"><i class="fa fa-pencil" aria-hidden="true"></i></li>
+                  <li ng-click="deleteTodo(todo._id)"><i class="fa fa-trash-o" aria-hidden="true"></i></li>
+                </ul>
+              </div> -->
+            </div>
+        </div>
+      </div>
+
+      <div id="todo-form" class="row">
+        <div class="col-sm-8 col-sm-offset-2 text-center">
+          <form action="">
+            <div class="form-group">
+              <input type="text" class="form-control input-lg text-center" placeholder="Take out the papers and the trash" ng-model="formData.text">
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>

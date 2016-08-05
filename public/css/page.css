@@ -1,0 +1,7 @@
+.jumbotron {
+  margin-bottom: .5em;
+}
+
+.task:last-child {
+  margin-bottom: 2em;
+}
