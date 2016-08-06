@@ -7,13 +7,10 @@ var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var stormpath = require('express-stormpath');
 
-//instagram.set('client_id','288e244b773348d0901b17a3ba931bbd');
-//instagram.set('client_secret','0c2a06c2830d435b988b6668724b3c42');
-
 // execute mongod from mongo folder with --dbpath into todoData
 // start with nodemon.js
 // wallah
-mongoose.connect('mongodb://<dbuser>:<dbpassword>@ds145385.mlab.com:45385/heroku_xv47kkpq');
+mongoose.connect('mongodb://heroku_xv47kkpq:556gj2ifir3g9dlm64dmvsvgm3@ds145385.mlab.com:45385/heroku_xv47kkpq');
 
 app.use(stormpath.init(app, {website: true}));
 app.use(express.static(__dirname + '/public'));
