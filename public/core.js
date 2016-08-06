@@ -4,6 +4,7 @@ scotchTodo.controller('mainController', function($scope,$rootScope,$http) {
   $scope.formData = {};
   $scope.todos = [];
   $rootScope.item = {};
+  $scope.oldText = "";
 
   $http.get('/api/todos').success(function(data) {
     $scope.todos = data;
@@ -42,6 +43,7 @@ scotchTodo.controller('mainController', function($scope,$rootScope,$http) {
   };
 
 $scope.enableEdit = function(todoItem) {
+  $scope.oldText = todoItem.text;
   todoItem.isBeingEdited = !todoItem.isBeingEdited;
   todoItem.needConfirmation = true;
   $rootScope.item = todoItem;
@@ -65,11 +67,8 @@ $scope.saveChanges = function(todoItem) {
 $scope.cancelChanges = function(todoItem) {
   todoItem.isBeingEdited = false;
   todoItem.needConfirmation = false;
-  // not complete
+  todoItem.text = $scope.oldText;
 };
-
-//border: 2px solid #5BC0DE;
-//cursor: pointerqa ;
 
 
 

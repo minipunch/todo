@@ -1,7 +1,18 @@
 .jumbotron {
   margin-bottom: .5em;
+  background: #9C7761;
+  color: white;
 }
 
 .task:last-child {
   margin-bottom: 2em;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.jumbotron span {
+  background: #ECAB62;
+  color: white;
 }

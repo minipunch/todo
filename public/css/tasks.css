@@ -1,11 +1,17 @@
-.task {
-  padding: 2em;
-  margin: 1em;
-  border: 2px solid #333333;
-  transition: all .2s ease-in-out;
+table tr td {
+  padding: 2em 2em 2em 1em !important;
 }
 
-.task:hover {
-  border: 2px solid #5BC0DE;
+
+i[class="fa fa-pencil fa-lg"], i[class="fa fa-check fa-lg"] {
+  margin-right: 1em;
+}
+
+
+i[class="fa fa-pencil fa-lg"]:hover, i[class="fa fa-check fa-lg"]:hover,i[class="fa fa-times fa-lg"]:hover,i[class="fa fa-trash-o fa-lg"]:hover {
   cursor: pointer;
+}
+
+tr span {
+  font-size: 1.2em;
 }

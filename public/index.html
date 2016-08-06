@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>test</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/tasks.css">
     <link rel="stylesheet" href="css/page.css">
@@ -35,30 +36,16 @@
                           <input type="text" ng-model="todo.text" ng-show="todo.isBeingEdited">
                         </td>
                         <td>
-                          <i class="fa fa-pencil" aria-hidden="true" ng-click="enableEdit(todo)" ng-show="!todo.needConfirmation"></i>
-                          <i class="fa fa-trash-o" aria-hidden="true" ng-click="deleteTodo(todo._id)" ng-show="!todo.needConfirmation"></i>
-                          <i class="fa fa-check" aria-hidden="true" ng-click="saveChanges(todo)" ng-show="todo.needConfirmation"></i>
-                          <i class="fa fa-times" aria-hidden="true" ng-show="todo.needConfirmation" ng-click="cancelChanges(todo)"></i>
+                          <i class="fa fa-pencil fa-lg" aria-hidden="true" ng-click="enableEdit(todo)" ng-show="!todo.needConfirmation"></i>
+                          <i class="fa fa-trash-o fa-lg" aria-hidden="true" ng-click="deleteTodo(todo._id)" ng-show="!todo.needConfirmation"></i>
+                          <i class="fa fa-check fa-lg" aria-hidden="true" ng-click="saveChanges(todo)" ng-show="todo.needConfirmation"></i>
+                          <i class="fa fa-times fa-lg" aria-hidden="true" ng-show="todo.needConfirmation" ng-click="cancelChanges(todo)"></i>
                         </td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
               </div>
-
-
-              <!-- <div class="task-text col-sm-9" ng-click="manageTask(todo._id)" ng-mouseover="taskHover(todo._id)">
-                <span id="todo_{{todo._id}}">{{todo.text}}</span>
-                <input style="display:none;" value="{{todo.text}}" type="text" id="{{todo._id}}">
-                <button class="{{todo._id}}" style="display:none;">Save</button>
-                <button style="display:none;">Cancel</button>
-              </div>
-              <div class="task-manage col-sm-3 {{todo._id}}">
-                <ul>
-                  <li ng-click="enableEdit(todo._id)" style="margin-right:1em;"><i class="fa fa-pencil" aria-hidden="true"></i></li>
-                  <li ng-click="deleteTodo(todo._id)"><i class="fa fa-trash-o" aria-hidden="true"></i></li>
-                </ul>
-              </div> -->
             </div>
         </div>
       </div>
@@ -67,7 +54,7 @@
         <div class="col-sm-8 col-sm-offset-2 text-center">
           <form action="">
             <div class="form-group">
-              <input type="text" class="form-control input-lg text-center" placeholder="Take out the papers and the trash" ng-model="formData.text">
+              <input type="text" class="form-control input-lg text-center" placeholder="New task..." ng-model="formData.text">
             </div>
             <button type="submit" class="btn btn-primary btn-lg" ng-click="createTodo()">Add</button>
           </form>
