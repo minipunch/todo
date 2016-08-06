@@ -15,17 +15,7 @@ var stormpath = require('express-stormpath');
 // wallah
 mongoose.connect('mongodb://localhost/data');
 
-app.use(stormpath.init(app, {
-  client: {
-    apiKey: {
-      id: '2WOUH2UXLEOZXAMV78GFEOK97',
-      secret: '95yknE1sZ5+v7a4FFS9flsR1/tbhTAgc1hJOAfzioJM'
-    }
-  },
-  application: {
-    href: 'https://api.stormpath.com/v1/applications/6wjb9o5n7bmRHeEwjemWnI'
-  }
-}));
+app.use(stormpath.init(app, {website: true}));
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({'extended':'true'}));
