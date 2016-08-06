@@ -13,7 +13,7 @@ var stormpath = require('express-stormpath');
 // execute mongod from mongo folder with --dbpath into todoData
 // start with nodemon.js
 // wallah
-mongoose.connect('mongodb://localhost/data');
+mongoose.connect('mongodb://<dbuser>:<dbpassword>@ds145385.mlab.com:45385/heroku_xv47kkpq');
 
 app.use(stormpath.init(app, {website: true}));
 app.use(express.static(__dirname + '/public'));
