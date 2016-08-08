@@ -21,7 +21,7 @@ scotchTodo.controller('mainController', function($scope,$rootScope,$http) {
         console.log(data);
       }).error(function(data) {
         console.log("error: " + data);
-      })
+      });
     } else {
       alert("Cannot add an empty task!");
     }
@@ -70,6 +70,12 @@ $scope.cancelChanges = function(todoItem) {
   todoItem.text = $scope.oldText;
 };
 
-
+$scope.logout = function() {
+  $http.post('logout').success(function(data) {
+    console.log("logged out");
+  }).error(function(data) {
+    console.log("error when logging out: " + data);
+  });
+};
 
 });
