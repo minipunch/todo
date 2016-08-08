@@ -31,15 +31,15 @@ var Todo = mongoose.model('Todo', {
   text: String
 });
 
-app.get('/', stormpath.loginRequired, function(req,res) {
-  res.sendfile('./public/index.html')
-});
-
 // listen
 app.on('stormpath.ready',function() {
  var port = Number(process.env.PORT || 8080);
  app.listen(port);
   console.log("App listening on port 8080");
+});
+
+app.get('/', stormpath.loginRequired, function(req,res) {
+  res.sendfile('./public/index.html')
 });
 
 app.get('/dashboard', stormpath.loginRequired , function(req,res) {
