@@ -40,6 +40,12 @@ app.on('stormpath.ready',function() {
 });
 
 // routes
+
+// log out
+app.post("/logout", function(req,res) {
+  res.redirect("/");
+});
+
 //get all todos
 app.get('/api/todos', function(req,res) {
   Todo.find(function(err, todos) {
