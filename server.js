@@ -53,6 +53,16 @@ request({
   console.log(res.body);
 });
 
+request({
+  url: 'http://safe-crag-86413.herokuapp.com/api/todos',
+  auth: {
+    user: '2FKXIFIEU595KDZ9BKTAPQT37',
+    pass: '2It36gkLihgFtyGxpIL4CcuNaaz0sVC4aRj55imZ/Os'
+  }
+}, function (err, res){
+  console.log(res.body);
+});
+
 app.get('/secret', stormpath.apiAuthenticationRequired, function(req,res) {
   Todo.find(function(err, todos) {
     if(err)
