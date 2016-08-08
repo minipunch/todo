@@ -10,9 +10,12 @@ var stormpath = require('express-stormpath');
 // execute mongod from mongo folder with --dbpath into todoData
 // start with nodemon.js
 // wallah
-mongoose.connect('mongodb://heroku_xv47kkpq:556gj2ifir3g9dlm64dmvsvgm3@ds145385.mlab.com:45385/heroku_xv47kkpq');
+mongoose.connect('mongodb://minipunch:redlego123@ds145385.mlab.com:45385/heroku_xv47kkpq');
 
-app.use(stormpath.init(app, {website: true}));
+app.use(stormpath.init(app, {
+  application: process.env.STORMPATH_URL
+}));
+
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({'extended':'true'}));
