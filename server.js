@@ -6,7 +6,6 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var stormpath = require('express-stormpath');
-var request = require('request');
 
 // id 2FKXIFIEU595KDZ9BKTAPQT37
 // secret 2It36gkLihgFtyGxpIL4CcuNaaz0sVC4aRj55imZ/Os
@@ -32,7 +31,7 @@ var Todo = mongoose.model('Todo', {
   text: String
 });
 
-app.get('/', function(req,res) {
+app.get('/', stormpath.loginRequired, function(req,res) {
   res.sendfile('./public/index.html')
 });
 
