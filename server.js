@@ -43,18 +43,13 @@ app.on('stormpath.ready',function() {
   console.log("App listening on port 8080");
 });
 
-app.get('/secret', stormpath.loginRequired , function(req,res) {
-  Todo.find(function(err, todos) {
-    if(err)
-      res.send(err);
-
-    res.json(todos);
-  });
+app.get('/dashboard', stormpath.loginRequired , function(req,res) {
+  res.json(req.user);
 });
 
 // routes
 //get all todos
-app.get('/api/todos', stormpath.apiAuthenticationRequired, function(req,res) {
+app.get('/api/todos', function(req,res) {
   Todo.find(function(err, todos) {
     if(err)
       res.send(err);
