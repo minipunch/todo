@@ -5,6 +5,7 @@ scotchTodo.controller('mainController', function($scope,$rootScope,$http) {
   $scope.todos = [];
   $rootScope.item = {};
   $scope.oldText = "";
+  $scope.isLoggedIn = false;
 
   $http.get('/api/todos').success(function(data) {
     $scope.todos = data;
@@ -72,6 +73,7 @@ $scope.cancelChanges = function(todoItem) {
 
 $scope.logout = function() {
   $http.post('logout').success(function(data) {
+    $scope.isLoggedIn = false;
     console.log("logged out");
   }).error(function(data) {
     console.log("error when logging out: " + data);
