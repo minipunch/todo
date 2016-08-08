@@ -28,7 +28,7 @@ var Todo = mongoose.model('Todo', {
   text: String
 });
 
-app.get('/', stormpath.loginRequired, function(req,res) {
+app.get('/', function(req,res) {
   res.sendfile('./public/index.html')
 });
 
@@ -41,7 +41,7 @@ app.on('stormpath.ready',function() {
 
 // routes
 //get all todos
-app.get('/api/todos', function(req,res) {
+app.get('/api/todos', stormpath.loginRequired, function(req,res) {
   Todo.find(function(err, todos) {
     if(err)
       res.send(err);
