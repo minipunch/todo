@@ -28,7 +28,7 @@ var Todo = mongoose.model('Todo', {
   text: String
 });
 
-app.get('/', function(req,res) {
+app.get('/todos', function(req,res) {
   res.sendfile('./public/index.html')
 });
 
