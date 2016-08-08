@@ -43,27 +43,18 @@ app.on('stormpath.ready',function() {
   console.log("App listening on port 8080");
 });
 
-request({
-  url: 'http://safe-crag-86413.herokuapp.com/secret',
-  auth: {
-    user: '2FKXIFIEU595KDZ9BKTAPQT37',
-    pass: '2It36gkLihgFtyGxpIL4CcuNaaz0sVC4aRj55imZ/Os'
-  }
-}, function (err, res){
-  console.log(res.body);
-});
-
-request({
-  url: 'http://safe-crag-86413.herokuapp.com/api/todos',
-  auth: {
-    user: '2FKXIFIEU595KDZ9BKTAPQT37',
-    pass: '2It36gkLihgFtyGxpIL4CcuNaaz0sVC4aRj55imZ/Os'
-  }
-}, function (err, res){
-  console.log(res.body);
-});
-
 app.get('/secret', stormpath.apiAuthenticationRequired, function(req,res) {
+  request({
+    url: 'http://safe-crag-86413.herokuapp.com/secret',
+    auth: {
+      user: '2FKXIFIEU595KDZ9BKTAPQT37',
+      pass: '2It36gkLihgFtyGxpIL4CcuNaaz0sVC4aRj55imZ/Os'
+    }
+  }, function (err, res){
+    console.log(res.body);
+  });
+
+
   Todo.find(function(err, todos) {
     if(err)
       res.send(err);
@@ -75,6 +66,15 @@ app.get('/secret', stormpath.apiAuthenticationRequired, function(req,res) {
 // routes
 //get all todos
 app.get('/api/todos', stormpath.apiAuthenticationRequired, function(req,res) {
+  request({
+    url: 'http://safe-crag-86413.herokuapp.com/api/todos',
+    auth: {
+      user: '2FKXIFIEU595KDZ9BKTAPQT37',
+      pass: '2It36gkLihgFtyGxpIL4CcuNaaz0sVC4aRj55imZ/Os'
+    }
+  }, function (err, res){
+    console.log(res.body);
+  });
   Todo.find(function(err, todos) {
     if(err)
       res.send(err);
